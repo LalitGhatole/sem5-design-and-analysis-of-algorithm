@@ -16,11 +16,9 @@ int partition(int arr[], int start, int end)
             count++;
     }
 
-    // Giving pivot element its correct position
     int pivotIndex = start + count;
     swap(arr[pivotIndex], arr[start]);
 
-    // Sorting left and right parts of the pivot element
     int i = start, j = end;
 
     while (i < pivotIndex && j > pivotIndex)
@@ -48,17 +46,13 @@ int partition(int arr[], int start, int end)
 void quickSort(int arr[], int start, int end)
 {
 
-    // base case
     if (start >= end)
         return;
 
-    // partitioning the array
     int p = partition(arr, start, end);
 
-    // Sorting the left part
     quickSort(arr, start, p - 1);
 
-    // Sorting the right part
     quickSort(arr, p + 1, end);
 }
 
@@ -75,7 +69,7 @@ int main()
     int n;
     cout << "Enter the number of elements: ";
     cin >> n;
-    int arr[n]; // create an array with given number of elements
+    int arr[n];
     cout << "Enter elements:" << endl;
     for (int i = 0; i < n; i++)
     {
@@ -87,7 +81,7 @@ int main()
     auto start = high_resolution_clock::now();
 
     // Sort the array using merge sort
-    quickSort(arr, 0, n - 1); //(n-1) for last index
+    quickSort(arr, 0, n - 1);
 
     // Stop the timer
     auto end = high_resolution_clock::now();
