@@ -8,7 +8,7 @@ int root[MAX];
 const int nodes = 4, edges = 5;
 pair <long long, pair<int, int> > p[MAX];
 
-int parent(int a)                                                       //find the parent of the given node
+int parent(int a)         
 {
     while(root[a] != a)
     {
@@ -18,7 +18,7 @@ int parent(int a)                                                       //find t
     return a;
 }
 
-void union_find(int a, int b)                                         //check if the given two vertices are in the same “union” or not
+void union_find(int a, int b)
 {
     int d = parent(a);
     int e = parent(b);
@@ -34,7 +34,7 @@ long long kruskal()
         a = p[i].second.first;
         b = p[i].second.second;
         cost = p[i].first;
-        if(parent(a) != parent(b))                                  //only select edge if it does not create a cycle (ie the two nodes forming it have different root nodes)
+        if(parent(a) != parent(b))
         {
             minCost += cost;
             union_find(a, b);
@@ -47,7 +47,7 @@ int main()
 {
     int x, y;
     long long weight, cost, minCost;
-    for(int i = 0;i < MAX;++i)                                       //initialize the array groups
+    for(int i = 0;i < MAX;++i)
     {
         root[i] = i;
     }
@@ -56,7 +56,7 @@ int main()
     p[2] = make_pair(13, make_pair(2, 3));
     p[3] = make_pair(21, make_pair(0, 2));
     p[4] = make_pair(22, make_pair(1, 3));
-    sort(p, p + edges);                                             //sort the array of edges
+    sort(p, p + edges);
     minCost = kruskal();
     cout << "Minimum cost is: "<< minCost << endl;
     return 0;
